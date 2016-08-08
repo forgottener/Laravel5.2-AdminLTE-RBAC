@@ -20,6 +20,8 @@
 
 - 配置 `.env` 文件,选择填入local 或者 dev 或者 production即可 (便于切换环境,配置读取相应的.local.env, .dev.env, .production.env)
 
+- 执行 `php artisan key`
+
 - 项目目录下执行 `php artisan serve` 使用 `http://localhost:8000/admin/index`登录后台
 
 - 默认后台账号: `admin@admin.com` 密码 : `123456`, 'test@test.com' 密码 : '123456'
