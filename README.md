@@ -24,6 +24,6 @@
 
 - 项目目录下执行 `php artisan serve` 使用 `http://localhost:8000/admin/index`登录后台
 
-- 默认后台账号: `admin@admin.com` 密码 : `123456`, 'test@test.com' 密码 : '123456'
+- 默认后台账号: `admin@admin.com` 密码 : `123456`, `test@test.com` 密码 : '123456'
 
 
