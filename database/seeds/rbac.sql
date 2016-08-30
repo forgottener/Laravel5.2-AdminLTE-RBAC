@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50626
+Source Server Version : 50714
 Source Host           : 127.0.0.1:3306
 Source Database       : rbac
 
 Target Server Type    : MYSQL
-Target Server Version : 50626
+Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2016-08-08 11:25:24
+Date: 2016-08-30 17:27:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,43 +30,6 @@ CREATE TABLE `admin_password_resets` (
 -- ----------------------------
 -- Records of admin_password_resets
 -- ----------------------------
-
--- ----------------------------
--- Table structure for admin_permissions
--- ----------------------------
-DROP TABLE IF EXISTS `admin_permissions`;
-CREATE TABLE `admin_permissions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `fid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '菜单父ID',
-  `icon` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '图标class',
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '权限名,采用route',
-  `display_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '权限显示名称',
-  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '描述',
-  `is_menu` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否作为菜单显示,[1|0]',
-  `sort` tinyint(4) NOT NULL DEFAULT '0' COMMENT '排序',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `admin_permissions_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Records of admin_permissions
--- ----------------------------
-INSERT INTO `admin_permissions` VALUES ('1', '0', 'fa-dashboard', 'admin.index', '首页', 'dashboard', '1', '99', '2016-08-04 19:41:31', '2016-08-04 20:03:25');
-INSERT INTO `admin_permissions` VALUES ('2', '0', 'fa-cog', '#system', '系统设置', '设置菜单', '1', '98', '2016-08-04 20:07:46', '2016-08-04 20:07:46');
-INSERT INTO `admin_permissions` VALUES ('3', '2', null, 'admin.permission.index', '权限列表', '权限菜单列表', '1', '99', '2016-08-05 10:38:32', '2016-08-05 10:38:32');
-INSERT INTO `admin_permissions` VALUES ('4', '3', null, 'admin.permission.create', '添加权限', '添加权限菜单操作', '0', '0', '2016-08-05 10:40:09', '2016-08-05 10:40:09');
-INSERT INTO `admin_permissions` VALUES ('5', '3', null, 'admin.permission.edit', '修改权限', '修改权限菜单操作', '0', '0', '2016-08-05 10:40:47', '2016-08-05 10:40:47');
-INSERT INTO `admin_permissions` VALUES ('6', '3', null, 'admin.permission.destroy', '删除权限', '删除权限菜单操作', '0', '0', '2016-08-05 10:41:34', '2016-08-05 10:41:34');
-INSERT INTO `admin_permissions` VALUES ('7', '2', null, 'admin.role.index', '角色列表', '角色列表展示', '1', '98', '2016-08-05 11:46:33', '2016-08-05 11:46:33');
-INSERT INTO `admin_permissions` VALUES ('8', '7', null, 'admin.role.create', '添加角色', '添加角色操作', '0', '0', '2016-08-05 11:59:17', '2016-08-05 11:59:17');
-INSERT INTO `admin_permissions` VALUES ('9', '7', null, 'admin.role.edit', '编辑角色', '编辑角色操作', '0', '0', '2016-08-05 11:59:45', '2016-08-05 11:59:45');
-INSERT INTO `admin_permissions` VALUES ('10', '7', null, 'admin.role.destroy', '删除角色', '删除角色操作', '0', '0', '2016-08-05 12:00:21', '2016-08-05 12:00:21');
-INSERT INTO `admin_permissions` VALUES ('11', '2', null, 'admin.user.index', '用户列表', '用户管理', '1', '97', '2016-08-05 22:16:43', '2016-08-05 22:16:43');
-INSERT INTO `admin_permissions` VALUES ('12', '11', null, 'admin.user.create', '添加用户', '添加用户', '0', '0', '2016-08-05 22:17:11', '2016-08-05 22:17:11');
-INSERT INTO `admin_permissions` VALUES ('13', '11', null, 'admin.user.edit', '编辑用户', '编辑用户', '0', '0', '2016-08-05 22:17:31', '2016-08-05 22:17:31');
-INSERT INTO `admin_permissions` VALUES ('14', '11', null, 'admin.user.destroy', '删除用户', '删除用户', '0', '0', '2016-08-05 22:17:47', '2016-08-05 22:17:47');
 
 -- ----------------------------
 -- Table structure for admin_permission_role
@@ -105,25 +68,42 @@ INSERT INTO `admin_permission_role` VALUES ('12', '2');
 INSERT INTO `admin_permission_role` VALUES ('13', '2');
 
 -- ----------------------------
--- Table structure for admin_roles
+-- Table structure for admin_permissions
 -- ----------------------------
-DROP TABLE IF EXISTS `admin_roles`;
-CREATE TABLE `admin_roles` (
+DROP TABLE IF EXISTS `admin_permissions`;
+CREATE TABLE `admin_permissions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '菜单父ID',
+  `icon` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '图标class',
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '权限名,采用route',
+  `display_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '权限显示名称',
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '描述',
+  `is_menu` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否作为菜单显示,[1|0]',
+  `sort` tinyint(4) NOT NULL DEFAULT '0' COMMENT '排序',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `admin_roles_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  UNIQUE KEY `admin_permissions_name_unique` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
--- Records of admin_roles
+-- Records of admin_permissions
 -- ----------------------------
-INSERT INTO `admin_roles` VALUES ('1', 'admin', '管理员', '管理员,权限较大', '2016-08-05 16:22:42', '2016-08-05 18:29:16');
-INSERT INTO `admin_roles` VALUES ('2', 'operation', '运营', '运营工作人员', '2016-08-05 19:18:07', '2016-08-05 19:18:07');
+INSERT INTO `admin_permissions` VALUES ('1', '0', 'fa-dashboard', 'admin.index', '首页', 'dashboard', '1', '99', '2016-08-04 19:41:31', '2016-08-04 20:03:25');
+INSERT INTO `admin_permissions` VALUES ('2', '0', 'fa-cog', '#system', '系统设置', '设置菜单', '1', '97', '2016-08-04 20:07:46', '2016-08-04 20:07:46');
+INSERT INTO `admin_permissions` VALUES ('3', '2', null, 'admin.permission.index', '权限列表', '权限菜单列表', '1', '99', '2016-08-05 10:38:32', '2016-08-05 10:38:32');
+INSERT INTO `admin_permissions` VALUES ('4', '3', null, 'admin.permission.create', '添加权限', '添加权限菜单操作', '0', '0', '2016-08-05 10:40:09', '2016-08-05 10:40:09');
+INSERT INTO `admin_permissions` VALUES ('5', '3', null, 'admin.permission.edit', '修改权限', '修改权限菜单操作', '0', '0', '2016-08-05 10:40:47', '2016-08-05 10:40:47');
+INSERT INTO `admin_permissions` VALUES ('6', '3', null, 'admin.permission.destroy', '删除权限', '删除权限菜单操作', '0', '0', '2016-08-05 10:41:34', '2016-08-05 10:41:34');
+INSERT INTO `admin_permissions` VALUES ('7', '2', null, 'admin.role.index', '角色列表', '角色列表展示', '1', '98', '2016-08-05 11:46:33', '2016-08-05 11:46:33');
+INSERT INTO `admin_permissions` VALUES ('8', '7', null, 'admin.role.create', '添加角色', '添加角色操作', '0', '0', '2016-08-05 11:59:17', '2016-08-05 11:59:17');
+INSERT INTO `admin_permissions` VALUES ('9', '7', null, 'admin.role.edit', '编辑角色', '编辑角色操作', '0', '0', '2016-08-05 11:59:45', '2016-08-05 11:59:45');
+INSERT INTO `admin_permissions` VALUES ('10', '7', null, 'admin.role.destroy', '删除角色', '删除角色操作', '0', '0', '2016-08-05 12:00:21', '2016-08-05 12:00:21');
+INSERT INTO `admin_permissions` VALUES ('11', '2', null, 'admin.user.index', '用户列表', '用户管理', '1', '97', '2016-08-05 22:16:43', '2016-08-05 22:16:43');
+INSERT INTO `admin_permissions` VALUES ('12', '11', null, 'admin.user.create', '添加用户', '添加用户', '0', '0', '2016-08-05 22:17:11', '2016-08-05 22:17:11');
+INSERT INTO `admin_permissions` VALUES ('13', '11', null, 'admin.user.edit', '编辑用户', '编辑用户', '0', '0', '2016-08-05 22:17:31', '2016-08-05 22:17:31');
+INSERT INTO `admin_permissions` VALUES ('14', '11', null, 'admin.user.destroy', '删除用户', '删除用户', '0', '0', '2016-08-05 22:17:47', '2016-08-05 22:17:47');
+INSERT INTO `admin_permissions` VALUES ('15', '0', 'fa-book', 'log-viewer::dashboard', '系统日志', '本地系统日志', '1', '98', '2016-08-30 17:22:01', '2016-08-30 17:22:01');
 
 -- ----------------------------
 -- Table structure for admin_role_user
@@ -146,6 +126,27 @@ INSERT INTO `admin_role_user` VALUES ('1', '2');
 INSERT INTO `admin_role_user` VALUES ('2', '2');
 
 -- ----------------------------
+-- Table structure for admin_roles
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_roles`;
+CREATE TABLE `admin_roles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `display_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `admin_roles_name_unique` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of admin_roles
+-- ----------------------------
+INSERT INTO `admin_roles` VALUES ('1', 'admin', '管理员', '管理员,权限较大', '2016-08-05 16:22:42', '2016-08-05 18:29:16');
+INSERT INTO `admin_roles` VALUES ('2', 'operation', '运营', '运营工作人员', '2016-08-05 19:18:07', '2016-08-05 19:18:07');
+
+-- ----------------------------
 -- Table structure for admin_users
 -- ----------------------------
 DROP TABLE IF EXISTS `admin_users`;
@@ -165,7 +166,7 @@ CREATE TABLE `admin_users` (
 -- ----------------------------
 -- Records of admin_users
 -- ----------------------------
-INSERT INTO `admin_users` VALUES ('1', 'admin', 'admin@admin.com', '$2y$10$d7z1viWm5T2Q9lOeYb5aTuREj0xWiy39lOdHDP6SZxKZeb.oIF0.2', '1', 'Dv3tee98qKqIO7fUbBpewPjOZReHnyNqXuFCWwSk0MGntEAQgkCP2q7zMe57', '2016-07-25 05:56:33', '2016-08-08 11:21:14');
+INSERT INTO `admin_users` VALUES ('1', 'admin', 'admin@admin.com', '$2y$10$d7z1viWm5T2Q9lOeYb5aTuREj0xWiy39lOdHDP6SZxKZeb.oIF0.2', '1', 'BuHGkQ24LfbN13ianhI98f2IaQu1NX480fckh90YKL9EKCk7iRyOhGyVsZGP', '2016-07-25 05:56:33', '2016-08-30 17:26:01');
 INSERT INTO `admin_users` VALUES ('2', 'test', 'test@test.com', '$2y$10$FsQtMWfKlMoze5g13KMlmeqcUDEW1tcB7ay4v8yS/OAtAH84KyFhe', '0', '7KWWuyDj66SIHXxQDoETd8hDU3oFdnmDdjgTguN12qmJO5TDXiPObVzbpxwq', '2016-08-05 20:40:04', '2016-08-06 11:16:15');
 
 -- ----------------------------

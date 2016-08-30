@@ -23,7 +23,7 @@ return [
      |  Supported locales :
      |    'auto', 'ar', 'de', 'en', 'es', 'fa', 'fr', 'hy', 'it', 'nl', 'pl', 'pt-BR', 'ro', 'ru', 'sv', 'th', 'tr', 'zh-TW', 'zh'
      */
-    'locale'        => 'auto',
+    'locale'        => 'zh',
 
     /* ------------------------------------------------------------------------------------------------
      |  Route settings
@@ -33,9 +33,9 @@ return [
         'enabled'    => true,
 
         'attributes' => [
-            'prefix'     => 'log-viewer',
+            'prefix'     => 'admin/log-viewer',
 
-            'middleware' => null,
+            'middleware' => array("web", "auth.admin"),
         ],
     ],
 
